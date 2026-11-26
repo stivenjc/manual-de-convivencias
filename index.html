@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("color-scheme");
+      if (savedTheme === "light" || savedTheme === "dark") {
+        document.querySelector('meta[name="color-scheme"]').content = savedTheme;
+      }
+    } catch (_) {}
+  </script>
+  <title>Manual de Convivencia INETMAR | Tipos de Faltas, Consecuencias y Soluciones</title>
+  <meta name="description" content="Página web y aplicación PWA informativa del Manual de Convivencia de INETMAR (Institución Educativa Técnica en Sistemas de Margarita): faltas Tipo 1, Tipo 2 y Tipo 3, consecuencias y posibles soluciones.">
+  <meta name="theme-color" content="#166534">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="INETMAR">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a href="#contenido-principal" class="skip-link visually-hidden">Saltar al contenido principal</a>
+
+  <div id="announcer" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner" id="header-inner">
+      <a class="site-logo" href="#inicio">
+        <span class="logo-frame">
+          <img src="./icons/escudo-inetmar.jpg" alt="Escudo de INETMAR" width="40" height="40" class="logo-mark">
+        </span>
+        <span class="logo-text">
+          <strong>INETMAR · Convivencia</strong>
+          <small>Fe y Perseverancia</small>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Principal">
+        <button
+          class="menu-button"
+          id="menu-button"
+          type="button"
+          popovertarget="site-menu"
+          popovertargetaction="toggle"
+          aria-controls="site-menu"
+        >
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+          <span>Menú</span>
+        </button>
+
+        <ul id="site-menu" class="site-menu" popover="auto">
+          <li><a href="#inicio" aria-current="page">Inicio</a></li>
+          <li><a href="#faltas">Tipos de Faltas</a></li>
+          <li><a href="#comparativa">Comparativa</a></li>
+          <li><a href="#asistente">¿Cómo Actuar?</a></li>
+          <li><a href="#quiz">Autoevaluación</a></li>
+          <li><a href="#principios">Principios</a></li>
+          <li class="menu-action-item">
+            <button type="button" class="nav-pill-btn" id="open-theme-btn" command="show-modal" commandfor="theme-dialog">
+              Apariencia
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-badges">
+            <span class="eyebrow-badge">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+              Convivencia Escolar · Guía Educativa
+            </span>
+            <span class="status-pill" id="connection-pill">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="connection-text">Disponible sin conexión</span>
+            </span>
+          </div>
+
+          <div class="school-banner">
+            <span class="school-crest-wrap">
+              <img src="./icons/escudo-inetmar.jpg" alt="Escudo oficial de la Institución Educativa Técnica en Sistemas de Margarita - INETMAR" width="68" height="68" class="school-crest">
+            </span>
+            <div class="school-meta">
+              <strong>INETMAR</strong>
+              <span>Institución Educativa Técnica en Sistemas de Margarita</span>
+              <small>Lema: Fe y Perseverancia</small>
+            </div>
+          </div>
+
+          <h1 id="contenido-principal" tabindex="-1">
+            Manual de Convivencia: <span class="highlight-text">Faltas, Consecuencias y Soluciones</span>
+          </h1>
+
+          <p class="hero-lead">
+            Aprende de forma clara cómo se clasifican las <strong>faltas Tipo 1, Tipo 2 y Tipo 3</strong>, cuáles son sus consecuencias formativas y qué soluciones y rutas de atención garantizan el respeto, la reparación y el debido proceso en la comunidad educativa.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#faltas" class="btn btn-primary">Explorar los 3 tipos</a>
+            <button type="button" class="btn btn-accent" id="pwa-install-btn" hidden>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v12m0 0l-4-4m4 4l4-4"/>
+                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+              </svg>
+              Instalar App (PWA)
+            </button>
+            <button type="button" class="btn btn-outline" id="open-install-help-btn" command="show-modal" commandfor="install-help-dialog">
+              ¿Cómo instalar en tu celular o PC?
+            </button>
+          </div>
+        </div>
+
+        <aside class="hero-summary" aria-label="Resumen rápido de los tres tipos de faltas">
+          <h2 class="summary-heading">Mapa rápido de convivencia</h2>
+          <div class="summary-cards">
+            <a href="#tarjeta-tipo-1" class="mini-card mini-tipo-1">
+              <span class="mini-tag">Tipo 1 · Leve</span>
+              <strong>Conflictos cotidianos</strong>
+              <span>Diálogo, mediación y pactos de aula.</span>
+            </a>
+            <a href="#tarjeta-tipo-2" class="mini-card mini-tipo-2">
+              <span class="mini-tag">Tipo 2 · Grave</span>
+              <strong>Agresión o acoso escolar</strong>
+              <span>Comité de Convivencia y reparación.</span>
+            </a>
+            <a href="#tarjeta-tipo-3" class="mini-card mini-tipo-3">
+              <span class="mini-tag">Tipo 3 · Gravísima</span>
+              <strong>Presunto delito o riesgo grave</strong>
+              <span>Ruta externa urgente (Salud, ICBF, Policía).</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="search-section" aria-labelledby="buscador-titulo">
+      <div class="container">
+        <div class="search-panel">
+          <div class="search-header">
+            <h2 id="buscador-titulo">Buscador rápido de situaciones</h2>
+            <p>Escribe una palabra clave (por ejemplo: <em>celular, acoso, uniforme, pelea, respeto</em>) o filtra por gravedad.</p>
+          </div>
+
+          <div class="search-controls">
+            <div class="search-field">
+              <label for="buscador-faltas">Buscar ejemplo, consecuencia o solución</label>
+              <div class="input-wrap">
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.3-4.3"/>
+                </svg>
+                <input
+                  id="buscador-faltas"
+                  type="search"
+                  placeholder="Ej: ciberacoso, llegada tarde, diálogo, arma..."
+                  autocomplete="off"
+                >
+                <button type="button" class="clear-btn" id="clear-search-btn" hidden aria-label="Limpiar búsqueda">Limpiar</button>
+              </div>
+            </div>
+
+            <div class="filter-group" role="group" aria-label="Filtrar por tipo de falta">
+              <button type="button" class="filter-chip" data-filter="all" aria-pressed="true">Todas</button>
+              <button type="button" class="filter-chip" data-filter="tipo1" aria-pressed="false">Tipo 1 · Leves</button>
+              <button type="button" class="filter-chip" data-filter="tipo2" aria-pressed="false">Tipo 2 · Graves</button>
+              <button type="button" class="filter-chip" data-filter="tipo3" aria-pressed="false">Tipo 3 · Gravísimas</button>
+            </div>
+          </div>
+
+          <p class="search-feedback" id="search-feedback">Mostrando los 3 tipos de faltas completos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faltas" class="faltas-section" aria-labelledby="faltas-titulo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Clasificación oficial educativa</span>
+            <h2 id="faltas-titulo">Tipos de Faltas: Tipo 1, Tipo 2 y Tipo 3</h2>
+            <p class="section-subtitle">
+              Cada nivel detalla ejemplos frecuentes, consecuencias respetando el debido proceso y posibles soluciones enfocadas en la convivencia pacífica.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="btn btn-outline btn-sm"
+            id="toggle-all-accordions"
+            commandfor="faltas-grid"
+            command="--toggle-all"
+            aria-expanded="false"
+          >
+            <span class="expand">Expandir todo</span>
+            <span class="collapse">Contraer todo</span>
+          </button>
+        </div>
+
+        <div class="faltas-grid" id="faltas-grid">
+          <!-- TIPO 1 -->
+          <article class="falta-card card-tipo-1" id="tarjeta-tipo-1" data-type="tipo1">
+            <header class="falta-header">
+              <div class="badge-row">
+                <span class="type-badge badge-tipo-1">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 16v-4M12 8h.01"/>
+                  </svg>
+                  Tipo 1 · Leve
+                </span>
+                <span class="scope-tag">Manejo pedagógico inmediato</span>
+              </div>
+              <h3>Faltas Tipo 1 (Situaciones Leves)</h3>
+              <p class="falta-def">
+                Corresponden a conflictos manejados inadecuadamente y situaciones esporádicas que afectan el clima escolar, <strong>sin generar daños al cuerpo o a la salud</strong> física o psicológica.
+              </p>
+            </header>
+
+            <section class="accordion" id="acc-tipo-1" aria-label="Detalles de faltas Tipo 1">
+              <details open data-searchable>
+                <summary>Ejemplos frecuentes</summary>
+                <div class="details-body">
+                  <ul>
+                    <li>Llegadas tarde reiteradas a clase o a la jornada escolar sin excusa válida.</li>
+                    <li>Interrumpir la clase constantemente, usar lenguaje descortés o colocar apodos ocasionales.</li>
+                    <li>Uso inadecuado del celular o dispositivos electrónicos durante actividades académicas.</li>
+                    <li>Incumplir con el porte adecuado del uniforme o descuidar el aseo del salón y materiales.</li>
+                    <li>Discusiones verbales menores entre compañeros sin agresión física ni acoso sostenido.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details data-searchable>
+                <summary>Consecuencias y medidas formativas</summary>
+                <div class="details-body">
+                  <ul>
+                    <li><strong>Llamado de atención pedagógico:</strong> conversación respetuosa e inmediata en privado o en el momento oportuno.</li>
+                    <li><strong>Registro en el observador:</strong> anotación objetiva de los hechos permitiendo los descargos del estudiante.</li>
+                    <li><strong>Acción reparadora sencilla:</strong> pedir disculpas sinceras, organizar el espacio afectado o realizar una actividad reflexiva.</li>
+                    <li><strong>Notificación al acudiente:</strong> si la conducta se repite, se cita a la familia para acordar estrategias de mejora.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details data-searchable>
+                <summary>Posibles soluciones y ruta de atención</summary>
+                <div class="details-body">
+                  <ol>
+                    <li><strong>Escucha activa y diálogo:</strong> reunir a las personas involucradas para escuchar versiones sin juzgar.</li>
+                    <li><strong>Mediación escolar:</strong> buscar soluciones pacíficas con apoyo del docente, director de grupo o mediador estudiantil.</li>
+                    <li><strong>Pactos de aula:</strong> establecer compromisos claros de respeto, puntualidad y uso responsable de dispositivos.</li>
+                    <li><strong>Seguimiento positivo:</strong> verificar en días posteriores el cumplimiento del acuerdo y reconocer el avance.</li>
+                  </ol>
+                </div>
+              </details>
+            </section>
+
+            <footer class="falta-footer">
+              <button type="button" class="btn btn-soft" data-protocol="tipo1">
+                Ver paso a paso del protocolo
+              </button>
+            </footer>
+          </article>
+
+          <!-- TIPO 2 -->
+          <article class="falta-card card-tipo-2" id="tarjeta-tipo-2" data-type="tipo2">
+            <header class="falta-header">
+              <div class="badge-row">
+                <span class="type-badge badge-tipo-2">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <path d="M12 9v4M12 17h.01"/>
+                  </svg>
+                  Tipo 2 · Grave
+                </span>
+                <span class="scope-tag">Comité de Convivencia</span>
+              </div>
+              <h3>Faltas Tipo 2 (Situaciones Graves)</h3>
+              <p class="falta-def">
+                Incluyen situaciones de <strong>agresión escolar, acoso escolar (bullying) y ciberacoso</strong> que no constituyen un delito penal, pero ocurren de forma repetida o sistemática, o causan daño al cuerpo o a la salud sin incapacidad.
+              </p>
+            </header>
+
+            <section class="accordion" id="acc-tipo-2" aria-label="Detalles de faltas Tipo 2">
+              <details open data-searchable>
+                <summary>Ejemplos frecuentes</summary>
+                <div class="details-body">
+                  <ul>
+                    <li>Peleas, empujones o agresiones físicas que causan malestar o lesiones leves sin incapacidad médica.</li>
+                    <li>Acoso escolar (<em>bullying</em>): burlas, exclusión, intimidación o humillación constante hacia un compañero.</li>
+                    <li>Ciberacoso (<em>ciberbullying</em>): difundir memes ofensivos, rumores o fotos sin permiso en redes sociales o chats.</li>
+                    <li>Reincidencia persistente en faltas Tipo 1 tras haber agotado los acuerdos pedagógicos previos.</li>
+                    <li>Daño intencional a bienes de la institución, fraude académico grave o suplantación de identidad escolar.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details data-searchable>
+                <summary>Consecuencias y medidas formativas</summary>
+                <div class="details-body">
+                  <ul>
+                    <li><strong>Apertura de proceso disciplinario formal:</strong> citación urgente a padres o acudientes y garantía del debido proceso.</li>
+                    <li><strong>Medidas de protección inmediatas:</strong> evitar cualquier contacto de intimidación o represalia hacia la persona afectada.</li>
+                    <li><strong>Reparación integral:</strong> reposición de bienes dañados, trabajo pedagógico de empatía y disculpa restaurativa verificada.</li>
+                    <li><strong>Sanciones proporcionales:</strong> matrícula en observación, compromiso de convivencia firmado o suspensión temporal de actividades complementarias.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details data-searchable>
+                <summary>Posibles soluciones y ruta de atención</summary>
+                <div class="details-body">
+                  <ol>
+                    <li><strong>Atención inmediata en salud:</strong> remitir a enfermería o atención emocional si hay afectación física o psicológica.</li>
+                    <li><strong>Reporte a Coordinación y Comité Escolar de Convivencia:</strong> documentar evidencias (incluyendo capturas en ciberacoso) respetando la privacidad.</li>
+                    <li><strong>Acompañamiento psicosocial:</strong> intervención de orientación escolar tanto para quien sufrió la agresión como para quien la cometió.</li>
+                    <li><strong>Círculos restaurativos con familias:</strong> construir compromisos claros con seguimiento semanal hasta restaurar la seguridad escolar.</li>
+                  </ol>
+                </div>
+              </details>
+            </section>
+
+            <footer class="falta-footer">
+              <button type="button" class="btn btn-soft" data-protocol="tipo2">
+                Ver paso a paso del protocolo
+              </button>
+            </footer>
+          </article>
+
+          <!-- TIPO 3 -->
+          <article class="falta-card card-tipo-3" id="tarjeta-tipo-3" data-type="tipo3">
+            <header class="falta-header">
+              <div class="badge-row">
+                <span class="type-badge badge-tipo-3">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2 2 7l10 5 10-5-10-5z"/>
+                    <path d="M12 22V12"/>
+                    <circle cx="12" cy="12" r="9"/>
+                  </svg>
+                  Tipo 3 · Gravísima
+                </span>
+                <span class="scope-tag">Activación de ruta externa</span>
+              </div>
+              <h3>Faltas Tipo 3 (Situaciones Gravísimas)</h3>
+              <p class="falta-def">
+                Situaciones de agresión o conductas que constituyen <strong>presuntos delitos</strong> contra la libertad, integridad y formación sexual, o cualquier otro delito tipificado en la ley penal vigente.
+              </p>
+            </header>
+
+            <section class="accordion" id="acc-tipo-3" aria-label="Detalles de faltas Tipo 3">
+              <details open data-searchable>
+                <summary>Ejemplos frecuentes</summary>
+                <div class="details-body">
+                  <ul>
+                    <li>Agresiones físicas graves que produzcan lesiones personales o incapacidad médica.</li>
+                    <li>Porte, consumo, venta o distribución de armas o sustancias psicoactivas en la institución o su entorno.</li>
+                    <li>Cualquier forma de abuso, acoso, explotación o violencia sexual.</li>
+                    <li>Amenazas graves contra la vida o integridad física, extorsión, hurto agravado o delitos informáticos graves.</li>
+                    <li>Inducción al suicidio, captación ilegal o violencia intrafamiliar detectada desde la escuela.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details data-searchable>
+                <summary>Consecuencias y medidas institucionales</summary>
+                <div class="details-body">
+                  <ul>
+                    <li><strong>Remisión inmediata a autoridades externas:</strong> Policía de Infancia y Adolescencia, ICBF, Fiscalía o Comisaría de Familia.</li>
+                    <li><strong>Medidas urgentes de protección:</strong> separación preventiva del presunto agresor del entorno de la víctima para salvaguardar su integridad.</li>
+                    <li><strong>Sanción máxima institucional:</strong> cancelación de matrícula o pérdida del cupo escolar tras surtir el debido proceso, sin obstruir la investigación penal.</li>
+                    <li><strong>Reserva y confidencialidad estricta:</strong> prohibido exponer o revictimizar públicamente a menores de edad.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details data-searchable>
+                <summary>Posibles soluciones y ruta de atención</summary>
+                <div class="details-body">
+                  <ol>
+                    <li><strong>Atención médica y psicológica urgente:</strong> trasladar o activar servicios de salud (línea de emergencias / urgencias) de inmediato.</li>
+                    <li><strong>Comunicación inmediata a rectoría y familias:</strong> informar de forma reservada a padres o representantes legales (salvo cuando el agresor sea del núcleo familiar, caso en que se remite directo a ICBF/autoridad).</li>
+                    <li><strong>Activación interinstitucional:</strong> entregar reporte formal al Comité Escolar de Convivencia y autoridades competentes sin realizar interrogatorios indebidos.</li>
+                    <li><strong>Prevención comunitaria:</strong> reforzar talleres de autocuidado, cultura de la legalidad y redes de apoyo seguras en todo el colegio.</li>
+                  </ol>
+                </div>
+              </details>
+            </section>
+
+            <footer class="falta-footer">
+              <button type="button" class="btn btn-soft" data-protocol="tipo3">
+                Ver paso a paso del protocolo
+              </button>
+            </footer>
+          </article>
+        </div>
+
+        <div class="empty-state" id="empty-search-state" hidden>
+          <h3>No encontramos coincidencias exactas</h3>
+          <p>Intenta con otra palabra (por ejemplo: <em>diálogo, acoso, uniforme, salud, mediación</em>) o limpia los filtros.</p>
+          <button type="button" class="btn btn-primary" id="reset-filters-btn">Mostrar todos los tipos</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparativa" class="compare-section" aria-labelledby="comparativa-titulo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Resumen visual</span>
+            <h2 id="comparativa-titulo">Tabla comparativa: Tipo 1 vs. Tipo 2 vs. Tipo 3</h2>
+            <p class="section-subtitle">Compara rápidamente la gravedad, consecuencias, posibles soluciones y quién atiende cada situación.</p>
+          </div>
+        </div>
+
+        <div class="table-wrap" tabindex="0" aria-label="Tabla comparativa desplazable horizontalmente">
+          <table>
+            <caption>Diferencias clave entre las faltas Tipo 1, Tipo 2 y Tipo 3 en el Manual de Convivencia</caption>
+            <thead>
+              <tr>
+                <th scope="col">Criterio</th>
+                <th scope="col">Tipo 1 · Leve</th>
+                <th scope="col">Tipo 2 · Grave</th>
+                <th scope="col">Tipo 3 · Gravísima</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">¿Qué la define?</th>
+                <td>Conflicto cotidiano o indisciplina esporádica sin daño físico o psicológico.</td>
+                <td>Agresión escolar, bullying o ciberacoso repetitivo, o daño físico sin incapacidad.</td>
+                <td>Conducta que constituye un presunto delito o pone en riesgo grave la vida e integridad.</td>
+              </tr>
+              <tr>
+                <th scope="row">Ejemplos comunes</th>
+                <td>Impuntualidad, interrupciones, mal uso del celular, apodos ocasionales.</td>
+                <td>Peleas leves, acoso escolar continuo, ciberbullying, daño a bienes.</td>
+                <td>Lesiones con incapacidad, porte de armas o drogas, abuso sexual, amenazas graves.</td>
+              </tr>
+              <tr>
+                <th scope="row">Consecuencias principales</th>
+                <td>Llamado de atención, registro en observador y acción reparadora sencilla.</td>
+                <td>Proceso formal con acudientes, matrícula en observación y reparación integral.</td>
+                <td>Protocolo externo legal, medidas de protección y posible cancelación de matrícula.</td>
+              </tr>
+              <tr>
+                <th scope="row">Posibles soluciones</th>
+                <td>Diálogo inmediato, mediación entre pares y pactos de convivencia en el aula.</td>
+                <td>Atención emocional, círculos restaurativos, orientación escolar y seguimiento.</td>
+                <td>Atención urgente en salud, protección de la víctima, denuncia y prevención escolar.</td>
+              </tr>
+              <tr>
+                <th scope="row">Responsables</th>
+                <td>Docente presente, director de grupo y mediadores escolares.</td>
+                <td>Coordinación, Orientación y Comité Escolar de Convivencia.</td>
+                <td>Rectoría, Comité de Convivencia, Salud, ICBF, Policía de Infancia y Fiscalía.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="asistente" class="assistant-section" aria-labelledby="asistente-titulo">
+      <div class="container">
+        <div class="assistant-card">
+          <div class="assistant-intro">
+            <span class="section-kicker">Herramienta interactiva</span>
+            <h2 id="asistente-titulo">Asistente rápido: ¿Qué tipo de falta es y cómo actuar?</h2>
+            <p>Responde estas 3 preguntas sobre una situación escolar para identificar la clasificación orientativa, sus consecuencias y la solución recomendada.</p>
+          </div>
+
+          <form id="classifier-form" class="classifier-form">
+            <fieldset class="question-block">
+              <legend>1. ¿La situación incluye un presunto delito, armas, sustancias psicoactivas, abuso sexual o lesión con incapacidad?</legend>
+              <div class="radio-grid">
+                <label class="choice-pill">
+                  <input type="radio" name="q_delito" value="si">
+                  <span>Sí, existe riesgo grave o presunto delito</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="radio" name="q_delito" value="no" checked>
+                  <span>No</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-block">
+              <legend>2. ¿Hubo agresión física, intimidación, acoso (bullying/ciberbullying) o daño intencional a bienes?</legend>
+              <div class="radio-grid">
+                <label class="choice-pill">
+                  <input type="radio" name="q_agresion" value="si">
+                  <span>Sí</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="radio" name="q_agresion" value="no" checked>
+                  <span>No</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="question-block">
+              <legend>3. ¿Es una conducta repetitiva o sistemática a pesar de llamados previos?</legend>
+              <div class="radio-grid">
+                <label class="choice-pill">
+                  <input type="radio" name="q_repite" value="si">
+                  <span>Sí, se repite o es sistemática</span>
+                </label>
+                <label class="choice-pill">
+                  <input type="radio" name="q_repite" value="no" checked>
+                  <span>No, fue un hecho aislado o cotidiano</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="classifier-actions">
+              <button type="submit" class="btn btn-primary">Analizar situación</button>
+              <button type="reset" class="btn btn-outline">Reiniciar</button>
+            </div>
+          </form>
+
+          <div class="classifier-result" id="classifier-result" aria-live="polite">
+            <span class="result-badge badge-tipo-1" id="res-badge">Resultado orientativo: Tipo 1 · Leve</span>
+            <h3 id="res-title">Conflicto cotidiano o indisciplina leve</h3>
+            <p id="res-desc">No involucra delito ni agresión sistemática. Se aborda con diálogo formativo inmediato y acuerdos de aula.</p>
+            <div class="result-columns">
+              <div>
+                <h4>Consecuencia sugerida</h4>
+                <p id="res-consequence">Llamado de atención respetuoso, registro pedagógico con descargos y reparación simbólica.</p>
+              </div>
+              <div>
+                <h4>Solución recomendada</h4>
+                <p id="res-solution">Escucha activa entre las partes, mediación escolar y compromiso de convivencia.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz" class="quiz-section" aria-labelledby="quiz-titulo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Repaso educativo</span>
+            <h2 id="quiz-titulo">Autoevaluación: Pon a prueba lo aprendido</h2>
+            <p class="section-subtitle">Selecciona el tipo de falta y la mejor solución para cada caso práctico escolar.</p>
+          </div>
+          <div class="quiz-score-box" id="quiz-score-box">
+            Puntaje: <strong id="quiz-score">0</strong> / <span id="quiz-total">5</span>
+          </div>
+        </div>
+
+        <div class="quiz-list" id="quiz-list"></div>
+
+        <div class="quiz-footer">
+          <button type="button" class="btn btn-outline" id="reset-quiz-btn">Reiniciar autoevaluación</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="principios" class="principles-section" aria-labelledby="principios-titulo">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Cultura de paz escolar</span>
+            <h2 id="principios-titulo">Pilares para construir soluciones duraderas</h2>
+            <p class="section-subtitle">Un Manual de Convivencia no busca solo sancionar: su meta es formar ciudadanos respetuosos y proteger a toda la comunidad.</p>
+          </div>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-card">
+            <h3>1. Debido proceso y escucha</h3>
+            <p>Todo estudiante tiene derecho a ser escuchado, presentar su versión de los hechos (descargos), contar con el acompañamiento de su familia y recibir medidas justas y proporcionales.</p>
+          </article>
+          <article class="principle-card">
+            <h3>2. Enfoque restaurativo</h3>
+            <p>Más allá del castigo, se prioriza reparar el daño causado a la persona o al grupo, asumir responsabilidades y reconstruir la confianza mediante el diálogo.</p>
+          </article>
+          <article class="principle-card">
+            <h3>3. Prevención y mediación</h3>
+            <p>Los comités de mediación estudiantil, la educación emocional y los pactos de aula evitan que un conflicto menor (Tipo 1) escale hacia una situación grave (Tipo 2 o 3).</p>
+          </article>
+          <article class="principle-card">
+            <h3>4. Corresponsabilidad</h3>
+            <p>Estudiantes, docentes, directivos y familias comparten el compromiso de cuidar la convivencia, denunciar oportunamente el acoso y proteger la dignidad humana.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="logo-frame footer-logo-frame">
+          <img src="./icons/escudo-inetmar.jpg" alt="Escudo INETMAR" width="44" height="44" class="logo-mark">
+        </span>
+        <div>
+          <strong>INETMAR · Manual de Convivencia Escolar</strong>
+          <p>Institución Educativa Técnica en Sistemas de Margarita · <em>Fe y Perseverancia</em>. Guía informativa de faltas Tipo 1, Tipo 2 y Tipo 3, consecuencias y soluciones.</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <button type="button" class="btn btn-outline btn-sm" command="show-modal" commandfor="install-help-dialog">Guía de instalación PWA</button>
+        <button type="button" class="btn btn-outline btn-sm" command="show-modal" commandfor="theme-dialog">Cambiar apariencia</button>
+        <a href="#inicio" class="btn btn-soft btn-sm">Volver arriba</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Cómo instalar la PWA -->
+  <dialog id="install-help-dialog" closedby="any" aria-labelledby="install-dialog-title">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <h1 id="install-dialog-title">Instalar como Aplicación (PWA)</h1>
+        <form method="dialog">
+          <button type="submit" class="close-icon-btn" autofocus aria-label="Cerrar ventana">✕</button>
+        </form>
+      </div>
+      <div class="dialog-body">
+        <p>Esta página web funciona también como una <strong>Aplicación Web Progresiva (PWA)</strong> con exactamente el mismo contenido, e incluso sin conexión a internet una vez abierta.</p>
+        <ul class="install-steps">
+          <li><strong>Android (Chrome / Edge):</strong> toca el botón <em>"Instalar App (PWA)"</em> o abre el menú <strong>⋮</strong> del navegador y elige <strong>"Instalar aplicación"</strong> o <strong>"Añadir a pantalla de inicio"</strong>.</li>
+          <li><strong>iPhone / iPad (Safari):</strong> toca el botón <strong>Compartir</strong> (cuadro con flecha hacia arriba) y selecciona <strong>"Añadir a pantalla de inicio"</strong>.</li>
+          <li><strong>Computador (Chrome / Edge):</strong> haz clic en el ícono de instalación en la barra de direcciones (a la derecha de la URL) y confirma <strong>"Instalar"</strong>.</li>
+        </ul>
+      </div>
+      <form method="dialog" class="dialog-actions">
+        <button type="submit" class="btn btn-primary">Entendido</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Modal: Detalle de protocolo -->
+  <dialog id="protocol-dialog" closedby="any" aria-labelledby="protocol-dialog-title">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <h1 id="protocol-dialog-title">Protocolo de atención</h1>
+        <form method="dialog">
+          <button type="submit" class="close-icon-btn" autofocus aria-label="Cerrar protocolo">✕</button>
+        </form>
+      </div>
+      <div class="dialog-body" id="protocol-dialog-body"></div>
+      <form method="dialog" class="dialog-actions">
+        <button type="submit" class="btn btn-primary">Cerrar</button>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Modal: Apariencia (Claro / Oscuro / Sistema) -->
+  <dialog id="theme-dialog" closedby="any" aria-labelledby="theme-dialog-title">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <h1 id="theme-dialog-title">Apariencia visual</h1>
+        <form method="dialog">
+          <button type="submit" class="close-icon-btn" autofocus aria-label="Cerrar apariencia">✕</button>
+        </form>
+      </div>
+      <div class="dialog-body">
+        <p>Elige cómo quieres ver el sitio y la app instalada (siempre manteniendo los colores verde, amarillo y blanco):</p>
+        <div class="theme-options" role="radiogroup" aria-labelledby="theme-dialog-title">
+          <label class="theme-option">
+            <input type="radio" name="theme-choice" value="light dark">
+            <span><strong>Automático (Sistema)</strong> — sigue el tema de tu dispositivo</span>
+          </label>
+          <label class="theme-option">
+            <input type="radio" name="theme-choice" value="light">
+            <span><strong>Modo Claro</strong> — fondo blanco con verde y amarillo</span>
+          </label>
+          <label class="theme-option">
+            <input type="radio" name="theme-choice" value="dark">
+            <span><strong>Modo Oscuro</strong> — verde bosque oscuro con blanco y amarillo</span>
+          </label>
+        </div>
+      </div>
+      <form method="dialog" class="dialog-actions">
+        <button type="submit" class="btn btn-primary">Listo</button>
+      </form>
+    </div>
+  </dialog>
+</body>
+</html>
